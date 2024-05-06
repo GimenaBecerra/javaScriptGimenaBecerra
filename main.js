@@ -1,50 +1,57 @@
-//Cargar un arrary de nombres
-var nombresArray = [
-    `Hernan`, `Marcela`, `Margarita`, `Marcelo`, `Manuel`,
-    `Agustina`, `Federico`, `Lautaro`, `Natalia`
-];
+const app = new function () {
+    const Lunes = {
+        Nombre: "Lunes",
+        Profesional: "Ines Martinez",
+        Hora: new Date(2024, 13, 14, 15, 16, 17),
+        reservas: []
+    };
+    const Martes = {
+        Nombre: "Martes",
+        Profesional: "Gonzalo Perez",
+        Hora: new Date(2024, 9, 10, 11, 12),
+        reservas: []
 
-//Creo una variable de tipo var(generica) y le cargo la cantidad de nombres en el array
-var arrayLength = nombresArray.length;
+    };
+    const Miercoles = {
+        Nombre: "Miercoles",
+        Profesional: "Ariel Ruarte",
+        Hora: new Date(2024, 9, 10, 11, 12),
+        reservas: []
 
-//Iniciamos la variable de tipo let para nombrelet
-let nombreLet;
+    };
+    const Jueves = {
+        Nombre: "Jueves",
+        Profesional:"Natalia Valentino",
+        Hora: new Date(2024, 7, 8, 9, 10, 11, 12),
+        reservas: []
 
-//Escribir funcion saludar
-function saludar() {
-    //Llammamos al cartel
-    nombreLet = prompt("Ingrese su nombre")
-    if (nombreLet.length === 0) {
-        alert(`Ingresar un Nombre, Por Favor`)
-    }
-    else {
-        //Bucle va a buscar un nombre dentro del array
-        for (var i = 0; i < arrayLength; i++) {
-            if (nombresArray[i] == nombreLet) {
-                //El usuario pertenece a la tabla;
-                alert(`Bienvenido ${nombreLet}`);
-                break;
-            }
-            //El usuario no pertenece a la tabla;
-            if (nombresArray[i] !== nombreLet) {
-                alert(`Nombre no registrado`);
-                break;
-            }
+    };
+    const Viernes = {
+        Nombre: "Viernes",
+        Profesional:"Antonella Bresolini",
+        Hora: new Date(2024, 7, 8, 9, 10, 11, 12),
+        reservas: []
+    };
+
+    this.turnos = [Lunes, Martes, Miercoles, Jueves, Viernes];
+
+    this.mostrarTurnos = function() {
+        var data = '<br>';
+        if (this.turnos.length > 0) {
+          for (i = 0; i < this.turnos.length; i++) {
+            var hora = this.turnos[i].Hora.getHours() < 10 ? '0' + this.turnos[i].Hora.getHours() : this.turnos[i].Hora.getHours();
+            var minutos = this.turnos[i].Hora.getMinutes() < 10 ? '0' + this.turnos[i].Hora.getMinutes() : this.turnos[i].Hora.getMinutes();
+            data += '<tr>';
+            data += '<td>turno:  # '+ (i+1) + this.turnos[i].Hora.toDateString() + " " + hora + ":" + minutos + '</td>';
+            data += '<td><button onclick="app.Reservar(' + i + ')">Reservar</button></td>';
+            data += '</tr>';
+          }
         }
-
-    }
-};
-
-//Llama la funcion
-saludar();
-
-
-
-
-//Escribirlo en la consola
-console.table(nombresArray);
-
-
+        console.log(data);
+        document.getElementById('turnos').innerHTML = data;
+        document.getElementById('turnos').style.display = 'block';
+      };
+}
 
 
 

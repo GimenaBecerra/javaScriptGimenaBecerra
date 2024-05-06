@@ -1,13 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--CSS-->
+    <link rel="stylesheet" href="style.css">
     <title>MI TURNO WEB</title>
 </head>
+
 <body>
-    Pagina para sacar turnos, donde se busca reservar un turno a partir de cierta cantidad de horarios y dias disponibles.
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <h1 class="section-title">MI TURNO WEB</h1>
+            </div>
+            <div class="row">
+                <div id="menu1" class="col-xs-12 col-md-6 col-lg-4">
+                    <div class="about-item">
+                        <div class="about-text">
+                            <h3><a>TURNOS DISPONIBLES</a></h3>
+                            <p>Consulte profesionales y horarios disponibles</p>
+                            <a class="btn btn-common btn-rm" href="#" onclick="app.mostrarTurnos();">Consultar</a>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <table>
+                                    <tbody id="turnos"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form action="javascript:void(0);" method="POST" id="ingreso">
+                    <p id="datosturnos"></p>
+                    <input type="text" id="documento" placeholder="Numero de documento">
+                    <input type="submit" value="Ingresar" />
+                </form>
+
+            </div>
+        </div>
+    </section>
     <!-- JS -->
     <script src="main.js"></script>
 </body>
+
 </html>
